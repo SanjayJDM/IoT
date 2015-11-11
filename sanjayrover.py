@@ -4,16 +4,18 @@ GPIO.setwarnings(False)
 
 GPIO.setmode(GPIO.BOARD)
 
-GPIO.setup(07, GPIO.OUT)
-GPIO.setup(11, GPIO.OUT)
-GPIO.setup(13, GPIO.OUT)
-GPIO.setup(15, GPIO.OUT)
+GPIO.setup(07, GPIO.OUT) #left
+GPIO.setup(11, GPIO.OUT) #right
+GPIO.setup(13, GPIO.OUT) #forward
+GPIO.setup(15, GPIO.OUT) #reverese
 
+#inititalizing the GPIO's to be in a false state
 GPIO.output(07,False)
 GPIO.output(11,False)
 GPIO.output(13,False)
 GPIO.output(15,False)
 
+#setting the pulse width modulation for forward and reverese - to control the speed of the Motor.
 fwd= GPIO.PWM(13,1500)
 bck= GPIO.PWM(15,1500)
 
@@ -26,7 +28,7 @@ try:
   # GPIO.output(15,False)
    bck.stop()
    fwd.start(100)
-   fwd.ChangeDutyCycle(100)
+   fwd.ChangeDutyCycle(100) #the less the slower the motor will spin
    print "Forward"
   if (x == 's'):
   # GPIO.output(13,False)
@@ -43,7 +45,7 @@ try:
    GPIO.output(07,False)
    GPIO.output(11,True)
    print "Right" 	
-  if (x == 'x'):
+  if (x == 'x'): # Re-initializing to a static state
    GPIO.output(07,False)
    GPIO.output(11,False)
    GPIO.output(13,False)
