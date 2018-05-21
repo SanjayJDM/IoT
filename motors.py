@@ -48,14 +48,16 @@ try:
  while True:
   x = raw_input()
   print x
-  if (x == 'w')
+  if (x == 'w'):
    Forwards()
-  if (x == 's')
+  if (x == 's'):
    Backwards()
-  if (x == 'a')
+  if (x == 'a'):
    Left()
-  if (x == 'd')
+   time.sleep(0.5)
+  if (x == 'd'):
    Right()
+   time.sleep(0.5)
   if (x == 'x')
    StopMotors()
 
