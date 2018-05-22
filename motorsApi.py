@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import json
 #from flask_api import FlaskAPI
 import RPi.GPIO as GPIO
 import time # Import the Time library
@@ -59,6 +60,12 @@ def api_root():
 @app.route('/sanjayrover/fwd/', methods=["GET", "POST"])
 def api_fwds_control():
     Forwards()
+    response = app.response_class(
+        response=json.dumps("FORWARD ACTION"),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 @app.route('/sanjayrover/back/', methods=["GET", "POST"])
     Backwards()
 @app.route('/sanjayrover/stop/', methods=["GET", "POST"])
