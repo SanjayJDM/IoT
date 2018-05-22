@@ -67,16 +67,41 @@ def api_fwds_control():
     )
     return response
 @app.route('/sanjayrover/back/', methods=["GET", "POST"])
+def api_bck_control():   
     Backwards()
+    response = app.response_class(
+        response=json.dumps("BACKWARD ACTION"),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 @app.route('/sanjayrover/stop/', methods=["GET", "POST"])
 def api_stp_control():
     StopMotors()
+    response = app.response_class(
+        response=json.dumps("STOPPING ALL ACTIONs"),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 @app.route('/sanjayrover/right/', methods=["GET", "POST"])
 def api_right_control():
     Right()
+    response = app.response_class(
+        response=json.dumps("RIGHT ACTION"),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 @app.route('/sanjayrover/left/', methods=["GET", "POST"])
 def api_left_control():
     Left()
+    response = app.response_class(
+        response=json.dumps("LEFT ACTION"),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 
 if __name__ == "__main__":
     app.run()
