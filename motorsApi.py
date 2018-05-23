@@ -102,7 +102,14 @@ def api_left_control():
         mimetype='application/json'
     )
     return response
-
+@app.route('/sanjayrover/hc/', methods=["GET", "POST"])
+def api_hc():
+    response = app.response_class(
+        response=json.dumps("SERVER RUNNING"),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 if __name__ == "__main__":
     app.run()
 
