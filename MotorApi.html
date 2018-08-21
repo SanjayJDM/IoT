@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+html, body {
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+}
+.table {
+    display:table;
+    width:20%;
+    height:20%;
+    border:1px solid #000;
+}
+.row {
+    display:table-row;
+    height:20%;
+}
+.cell1, .cell2, .cell3 {
+    display:table-cell;
+    width:33%;
+    height:20%;
+    border:1px solid #CCC;
+}
+.cell2 > img {
+    width:20%;
+    height:20%;
+}
+</style>
+<script type="text/javascript">
+
+
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; " + expires;
+    }
+
+    function checkCookie() {
+        var user = getCookie("username");
+        if (user != "") {
+            alert("Welcome again " + user);
+        } else {
+            user = prompt("Enter your name:", "");
+            var password = prompt("Enter password");
+            if (user == "san j" && password == Math.round(Math.sin(30) + Math.cos(30) * Math.sqrt(Math.tan(60))) + 22) {
+                setCookie("username", user, 30);
+            }
+            else {
+                alert("Invalid username password");
+                quitBox();
+            }
+            if (user != "" && user != null) {
+                setCookie("username", user, 30);
+            }
+        }
+    }
+
+    function quitBox() {
+
+        open(location, '_self').close();
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1);
+            if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+        }
+        return "";
+    }
+
+</script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+        <script>
+                
+                function onFwdMouseDown() {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', "http://82.29.154.142:8001/sanjayrover/fwd/", true);
+                    xhr.send();
+                }
+                  
+                function onMouseUp() {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', "http://82.29.154.142:8001/sanjayrover/stop/", true);
+                    xhr.send();
+                }
+
+                function onBackMouseDown() {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', "http://82.29.154.142:8001/sanjayrover/back/", true);
+                    xhr.send();
+                }
+                
+                function onRightTurnMouseDown() {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', "http://82.29.154.142:8001/sanjayrover/right/", true);
+                    xhr.send();
+                }
+                
+                function onLeftTurnMouseDown() {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', "http://82.29.154.142:8001/sanjayrover/left/", true);
+                    xhr.send();
+                }
+
+                function onHCMouseDown() {
+                    var xhr = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                        document.getElementById("status").innerHTML =
+                        this.responseText;
+                        }
+                        else{
+                            document.getElementById("status").innerHTML =
+                        "Not Working";
+                        }
+                    };
+                    xhr.open('GET', "http://82.29.154.142:8001/sanjayrover/hc/", true);
+                    xhr.send();
+                    //xhr.response;
+                }
+
+                </script>
+      <Center>
+        <p>Rover Control</p> 
+    <a href="#" onmousedown="javscript:onHCMouseDown()">Check Rover Status></a></div>
+          
+    <div class="table">
+            <div class="row">
+                <div class="cell1"></div>
+                <div class="cell2"> <a href="#" onmousedown="javscript:onFwdMouseDown()" onmouseup="javascript:onMouseUp()"><img src="img/up.png" height="18" width="18"/></a></div>
+                <div class="cell3"></div>
+            </div>
+            <div class="row">
+                <div class="cell1"><a href="#" onmousedown="javscript:onRightTurnMouseDown()" onmouseup="javascript:onMouseUp()"><img src="img/left.png" height="23" width="18"/></a></div>
+                <div id="status" class="cell2"><h6>Fetching Data...</h6></div>
+                <div class="cell3"><a href="#" onmousedown="javscript:onLeftTurnMouseDown()" onmouseup="javascript:onMouseUp()"><img src="img/right.png" height="18" width="18"/></a> </div>
+            </div>
+            <div class="row">
+                <div class="cell1"></div>
+                <div class="cell2"> <a href="#" onmousedown="javscript:onBackMouseDown()" onmouseup="javascript:onMouseUp()"><img src="img/down.png" height="18" width="23"/></a></div>
+                <div class="cell3"></div>
+            </div>
+        </div>
+        </Center>
+ <!--<table style="width:100%">
+        <tr>
+            <th>CONTROLS</th>
+        </tr>
+        
+        
+
+        <!--<a href="#" onmousedown="javscript:onUpMouseDown()" onmouseup="javascript:onUpMouseUp()">Up</a>
+        <a href="#" onmousedown="javscript:onDownMouseDown()" onmouseup="javascript:onDownMouseUp()">Down</a>
+        <a href="#" onmousedown="javscript:onLeftMouseDown()" onmouseup="javascript:onLeftMouseUp()">Left</a>
+        <a href="#" onmousedown="javscript:onRightMouseDown()" onmouseup="javascript:onRightMouseUp()">Right</a>        
+
+
+        <tr>
+            <td><a href="http://82.29.154.142:8000/decoder_control.cgi?command=0&onestep=5&user=operator&pwd=123456" target="main">UP</a></td>
+        </tr>
+        <tr>
+            <td><a href="http://82.29.154.142:8000/decoder_control.cgi?command=1&onestep=5&user=operator&pwd=123456" target="main">STOP UP</a></td>
+        </tr>
+        <tr>
+            <td><a href="http://82.29.154.142:8000/decoder_control.cgi?command=2&onestep=5&user=operator&pwd=123456" target="main">DOWN</a></td>
+        </tr>
+        <tr>
+            <td><a href="http://82.29.154.142:8000/decoder_control.cgi?command=3&onestep=5&user=operator&pwd=123456" target="main">STOP DOWN</a></td>
+        </tr>
+        <tr>
+            <td><a href="http://82.29.154.142:8000/decoder_control.cgi?command=4&onestep=5&user=operator&pwd=123456" target="main">LEFT</a></td>
+        </tr>
+        <tr>
+            <td><a href="http://82.29.154.142:8000/decoder_control.cgi?command=5&onestep=5&user=operator&pwd=123456" target="main">STOP LEFT</a></td>
+        </tr>
+        <tr>
+            <td><a href="http://82.29.154.142:8000/decoder_control.cgi?command=6&onestep=5&user=operator&pwd=123456" target="main">RIGHT</a></td>
+        </tr>
+        <tr>
+            <td><a href="http://82.29.154.142:8000/decoder_control.cgi?command=7&onestep=5&user=operator&pwd=123456" target="main">STOP RIGHT</a></td>
+        </tr>
+        <tr>
+            <td><a href="http://82.29.154.142:8000/decoder_control.cgi?command=25&onestep=5&user=operator&pwd=123456" target="main">CENTER</a></td>
+        </tr>
+        <tr>
+            <td><a href="http://82.29.154.142:8000/decoder_control.cgi?command=26&onestep=5&user=operator&pwd=123456" target="main">VERTICAL PATROL</a></td>
+        </tr>
+        <tr>
+            <td><a href="http://82.29.154.142:8000/decoder_control.cgi?command=27&onestep=5&user=operator&pwd=123456" target="main">STOP VERTICAL PATROL</a></td>
+        </tr>
+        <tr>
+            <td><a href="http://82.29.154.142:8000/decoder_control.cgi?command=28&onestep=5&user=operator&pwd=123456" target="main">HORIZONTAL PATROL</a></td>
+        </tr>
+        <tr>
+            <td><a href="http://82.29.154.142:8000/decoder_control.cgi?command=29&onestep=5&user=operator&pwd=123456" target="main">STOP HORIZONTAL PATROL</a></td>
+        </tr>
+    </table>-->
+
+   
+</body>
+</html>
